@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    title
+      | The Sims DB - 
+      = title
+    link(rel='stylesheet', href='/stylesheets/reset.css')
+    link(rel='stylesheet', href='/stylesheets/header.css')
+    block header
+  body
+    include header
+    block content
+    include footer
+    block scripts

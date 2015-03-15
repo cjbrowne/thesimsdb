@@ -1,0 +1,28 @@
+extends layout
+block header
+  link(rel='stylesheet', href='/stylesheets/index.css')
+
+block content
+  main
+    header.page-title
+      h1 My Sims
+      // secret ugly file input button to get the file dialog
+      input(type='file', accept='.package', style='display:none')#file-upload
+      button.extract Extract...
+    ul.sim-list
+      each sim in sims
+        li
+          - var compositeSimName = sim.first_name + ' ' + sim.last_name
+          if sim.gender == 'm'
+            span.sim-name.male= compositeSimName
+            span.sim-gender Male
+          else if sim.gender == 'f'
+            span.sim-name.female= compositeSimName
+            span.sim-gender Female
+          else
+            span.sim-name= compositeSimName
+            span.sim-gender Unknown
+          span.sim-life-stage= sim.life_stage.replace(/^(.){1}/,'$1'.toUpperCase())
+
+block scripts
+  script(src='/javascripts/index.js')
